@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,12 +24,14 @@ namespace HiddenGO
                     if (GUILayout.Button($"Show {selection.name}"))
                     {
                         selection.hideFlags &= ~HideFlags.HideInHierarchy;
+                        EditorUtility.SetDirty(selection);
                         EditorApplication.DirtyHierarchyWindowSorting();
                     }
                 }
                 else if (GUILayout.Button($"Hide {selection.name}"))
                 {
                     selection.hideFlags |= HideFlags.HideInHierarchy;
+                    EditorUtility.SetDirty(selection);
                     EditorApplication.DirtyHierarchyWindowSorting();
                 }
             }
